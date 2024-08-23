@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load tz %}
+
+{% block title %}
+ - {% trans 'Chronicles' %}
+{% endblock %}
+
+{% block content %}
+
+{% url 'sound_reactive_server:led_profiles' as page_url %}
+
+{% url 'sound_reactive_server:led_profiles' as chronicles_data_url %}
+{% include 'common/tables/led_profiles/_led_profiles_table_html.html' with chronicles_data_url=chronicles_data_url %}
+
+{% endblock %}
+
+{% block scripts %}
+
+{% include 'common/_formatters.html' %}
+{% include 'common/tables/led_profiles/_led_profiles_table_scripts.html' %}
+
+{% endblock %}

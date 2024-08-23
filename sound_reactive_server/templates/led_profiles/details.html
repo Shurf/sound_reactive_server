@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load tz %}
+
+{% block title %}
+ - {{ led_profile.profile_name }}
+{% endblock %}
+
+{% block content %}
+
+<h3>{{ led_profile.profile_name }}
+<a class="me-2" title="Edit" href=/sound_reactive_server/led_profiles/{{ led_profile.id }}/update{{ return_url }}><i class="fa fa-edit fa-sm"></i></a>
+</h3>
+<table border="1"
+   class="table table-bordered table-striped table-sm"
+   data-show-columns="true">
+    <tr><td><b>{% trans 'Profile name' %}</b></td><td>{{ led_profile.profile_name }}</td></tr>
+    <tr><td><b>{% trans 'Current' %}</b></td><td>{{ led_profile.is_current }}</td></tr>
+    <tr><td><b>{% trans 'Red' %}</b></td><td>{{ led_profile.red }}</td></tr>
+    <tr><td><b>{% trans 'Green' %}</b></td><td>{{ led_profile.green }}</td></tr>
+    <tr><td><b>{% trans 'Blue' %}</b></td><td>{{ led_profile.blue }}</td></tr>
+</table>
+
+{% endblock %}
+
+{% block scripts %}
+{% include 'common/_formatters.html' %}
+
+{% endblock %}
+

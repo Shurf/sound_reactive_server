@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+ - {{ title }}
+{% endblock %}
+
+{% block content %}
+
+{% for additional_header in additional_headers %}
+    <h4>{{ additional_header }}</h4>
+{% endfor %}
+
+<div class="vertical-center" style="min-height: 90%; min-height: 90vh; display: flex; align-items: center;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="w-100">
+                <h1 align="center" class="mt-3 mb-3">{% trans 'Create new '%}{{ entity_name }}</h1>
+                <form action="{{ url }}"
+                      method="post"
+                      class="form">
+
+
+                    {% csrf_token %}
+                    {% if form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">
+                    {{ form.non_field_errors }}
+                    </div>
+                    {% endif %}
+
+                    {% for hidden_field in form.hidden_fields %}
+                        {{ hidden_field.errors }}
+                        {{ hidden_field }}
+                    {% endfor %}
+
+                    <table class="table">
+                        {% for field in form.visible_fields %}
+                            <tr>
+                                <td>
+                                    {{ field.label_tag }}
+                                    {{ field.errors }}
+                                </td>
+                                <td>
+                                    {% if field.is_check_box %}
+                                        <div class="form-check form-switch">{{ field }}</div>
+                                    {% else %}
+                                        {{ field }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {{ field.help_text }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td align="center" colspan="3">
+                                <input type="submit" class="btn btn-primary" value="{% trans 'Create' %}">
+                            </td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

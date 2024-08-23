@@ -1,0 +1,6 @@
+config.yml
+*.pyc
+uploads/**
+venv/**
+*.sqlite3
+*.log

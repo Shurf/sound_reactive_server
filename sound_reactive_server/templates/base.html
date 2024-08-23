@@ -1,0 +1,70 @@
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% trans 'Sound reactive server' %}
+        {% block title %}
+        {% endblock %}
+    </title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap-4.2.1.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-table.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome-5.6.3.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/additions.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'sound_reactive_server:default' %}">
+            <img alt="Sound reactive server" width="30" src="{% static 'img/hookah_led.jpeg' %}" />
+            {% trans 'Sound reactive server' %}
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="dropdown navbar-nav mr-2"><div class="dropdown-toggle" data-toggle="dropdown">{% trans 'Dashboard' %}<b class="caret"></b></div>
+                    <ul class="dropdown-menu">
+                        <li class="nav-item">
+                            <a class="nav-link {% if request.resolver_match.url_name == 'led_profiles' or request.resolver_match.url_name == 'default' %} active {% endif %}"
+                               href="{% url 'sound_reactive_server:led_profiles' %}">
+                                {% trans 'Chronicles' %}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>         
+        </div>
+
+    </nav>
+
+    <div class="p-3">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/popper-1.14.6.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-4.2.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-table.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-table-en-US-1.12.2.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-table-cookie-1.12.2.min.js' %}"></script>
+    <script src="{% static 'js/mdb.min.js' %}"></script>
+    <script src="{% static 'js/sweetalert.min.js' %}"></script>
+
+    {% block scripts %}
+    {% endblock scripts %}
+
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
+
+</body>
+</html>

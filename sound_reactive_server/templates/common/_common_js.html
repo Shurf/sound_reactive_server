@@ -1,0 +1,20 @@
+<script>
+    function processValue(value) {
+        if (value.constructor === Object)
+        {
+            let value_list = []
+            Object.keys(value).forEach(function(key) {
+                if (value[key].constructor === Object) {
+                    if (value[key]['object_type'] === 'character') {
+                        value_list.push(value[key]['character_name']);
+                    }
+                }
+                else {
+                    value_list.push(value[key]);
+                }
+            });
+            return value_list.join(', ')
+        }
+        return value
+    }
+</script>

@@ -1,0 +1,41 @@
+{% load i18n %}
+
+<div class="card mt-3">
+    <h5 class="card-header">
+
+        {% trans 'LED Profiles' %}
+        <a class="btn btn-primary btn-sm pull-right" href="{% url 'sound_reactive_server:create_led_profile' %}{{ return_url }}">{% trans 'New LED profile' %}</a>
+
+    </h5>
+    <div class="card-body">
+        <table
+                id="led_profiles_table"
+                data-sticky-header="true"
+                data-cookie="true"
+                data-cookie-id-table="led-profiles-table"
+                data-cookie-expire="1y"
+                data-toolbar="#toolbar"
+                data-search="true"
+                data-show-columns="true"
+                data-show-refresh="true"
+                data-show-columns-toggle-all="true"
+                data-detail-view="false"
+                data-show-export="true"
+                data-click-to-select="true"
+                data-detail-formatter="ledProfileDetailFormatter"
+                data-minimum-count-columns="2"
+                data-pagination="true"
+                data-pagination-v-align="both"
+                data-id-field="id"
+                data-page-size="50"
+                data-page-list="[50, 100, all]"
+                data-side-pagination="server"
+                data-url="{{ chronicles_data_url }}"
+                data-query-params="ledProfilesQueryParams"
+                data-sort-name="led_profile_name"
+                data-sort-order="asc"
+                data-show-footer="false"
+                data-response-handler="ledProfilesResponseHandler">
+        </table>
+    </div>
+</div>

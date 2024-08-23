@@ -1,0 +1,111 @@
+{% include 'common/_common_js.html' %}
+
+<script>
+  var $chronicles_table = $('#led_profiles_table')
+
+  function ledProfilesQueryParams(params) {
+    params.json = true;
+    return params
+  }
+
+  function ledProfilesResponseHandler(res) {
+    return res
+  }
+
+  function getLedProfileFieldDescription(field_name) {
+    let names_dict = {
+        'id': 'Id',
+        'led_profile_name': 'Name',
+        'is_current': 'Current',
+        'red': 'Red',
+        'green': 'Green',
+        'blue': 'Blue',
+        'brightness': 'Brightness',
+        'multiplier': 'Multiplier',
+        'mode': 'Mode'
+    }
+    if(field_name in names_dict)
+        return names_dict[field_name]
+    return '!' + field_name
+  }
+
+  function ledProfileDetailFormatter(index, row) {
+    var html = []
+    $.each(row, function (key, value) {
+      if(![].includes(key))
+        html.push('<p><b>' + getLedProfileFieldDescription(key) + ':</b> ' + processValue(value) + '</p>')
+    })
+    return html.join('')
+  }
+
+  function initLedProfileTable() {
+    $chronicles_table.bootstrapTable('destroy').bootstrapTable({
+      cookiesEnabled: {{ enabled_cookies|safe }},
+      columns: [
+        {
+          title: getLedProfileFieldDescription('led_profile_name'),
+          field: 'led_profile_name',
+          sortable: true,
+          visible: true
+        },
+        {
+          title: getLedProfileFieldDescription('is_current'),
+          field: 'is_current',
+          sortable: true,
+          visible: true,
+          formatter: isCurrentFormatter
+        },
+        {
+          title: getLedProfileFieldDescription('red'),
+          field: 'red',
+          sortable: true,
+          visible: true
+        },
+        {
+          title: getLedProfileFieldDescription('green'),
+          field: 'green',
+          sortable: true,
+          visible: true
+        },
+        {
+          title: getLedProfileFieldDescription('blue'),
+          field: 'blue',
+          sortable: true,
+          visible: true
+        },
+        {
+          title: getLedProfileFieldDescription('brightness'),
+          field: 'brightness',
+          sortable: true,
+          visible: true
+        },
+        {
+          title: getLedProfileFieldDescription('multiplier'),
+          field: 'multiplier',
+          sortable: true,
+          visible: true
+        },
+        {
+          title: getLedProfileFieldDescription('mode'),
+          field: 'mode',
+          sortable: true,
+          visible: true,
+          formatter: modeFormatter  
+        },  
+        {
+          field: 'edit',
+          sortable: false,
+          clickToSelect: false,
+          switchable: false,
+          forceHide: true,
+          width: 120,
+          formatter: ledProfileEditFormatter
+        }
+      ]
+    })
+  }
+
+  $(function() {
+    initLedProfileTable();
+  })
+</script>

@@ -1,0 +1,95 @@
+.table td.fit,
+.table th.fit {
+    white-space: nowrap;
+    width: 1%;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.highlight {
+    background-color: lightblue !important;
+}
+
+/*------------ view-results ------------*/
+table.view.results td:nth-last-child(8n),
+table.view.results td:nth-last-child(8n - 2) {
+    border-left: 2px solid #737373;
+}
+
+table.view.results6 td:nth-last-child(6n) {
+    border-left: 2px solid #737373;
+}
+
+/*------------ aggregate-results ------------*/
+table.aggregate.results td:nth-last-child(4n) {
+    border-left: 2px solid #737373;
+}
+
+/*------------ build-results ------------*/
+table.build.results td:nth-last-child(4n),
+table.build.results td:nth-last-child(4n - 1) {
+    border-left: 2px solid #737373;
+}
+
+table.build.results6 td:nth-last-child(3n) {
+    border-left: 2px solid #737373;
+}
+
+/*------------ all results tables ------------*/
+
+table.results tr:nth-child(1) th:nth-child(5n + 2) {
+    background-color: Honeydew;
+}
+
+
+
+table.results tr:nth-child(1) th:nth-child(5n + 3) {
+    background-color: OldLace;
+}
+
+
+
+table.results tr:nth-child(1) th:nth-child(5n + 4) {
+    background-color: LightCyan;
+}
+
+
+
+table.results tr:nth-child(1) th:nth-child(5n + 5) {
+    background-color: Ivory;
+}
+
+
+
+table.results tr:nth-child(1) th:nth-child(5n + 6) {
+    background-color: Lavender;
+}
+
+table.results,
+table.results thead td,
+table.results thead th {
+    border: 2px solid #737373;
+}
+
+table.results td,
+table.results th {
+    padding: 2px;
+    font-size: 12px;
+}
+
+table.results6,
+table.results6 thead td,
+table.results6 thead th {
+    border: 2px solid #737373;
+}
+
+table.results6 td,
+table.results6 th {
+    padding: 2px;
+    font-size: 12px;
+}
+
+.pull-right { float: right; }
+.pull-left { float: left; }

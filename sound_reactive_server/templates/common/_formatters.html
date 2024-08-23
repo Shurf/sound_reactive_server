@@ -1,0 +1,37 @@
+{% load i18n %}
+
+<script>
+
+  function isCurrentFormatter(value, row, index) {
+    result = ''
+    if(row.is_current)
+        result += '<div align="center"><i class="fa fa-check-circle fa-lg"/></div>';
+    return result
+  }
+  
+  function modeFormatter(value, row, index) {
+    return row.mode_printable
+  }
+  
+  function isEnabledFormatter(value, row, index) {
+    result = ''
+    if(row.enabled)
+        result += '<div align="center"><i class="fa fa-check-circle fa-lg"/></div>';
+    return result
+  }
+  
+  function isUseSecondaryFormatter(value, row, index) {
+    result = ''
+    if(row.use_secondary)
+        result += '<div align="center"><i class="fa fa-check-circle fa-lg"/></div>';
+    return result
+  }
+
+  function ledProfileEditFormatter(value, row, index) {
+    result = ''
+    result += '<a class="me-2" title="Edit" href=/sound_reactive_server/led_profiles/' + row.id + '/update{{ return_url }}><i class="fa fa-edit fa-lg"/></a>';
+    result += '<a class="me-2" title="Delete" href=/sound_reactive_server/led_profiles/' + row.id + '/delete{{ return_url }}><i class="fa fa-trash fa-lg"/></a>';
+    return result
+  }
+
+</script>
